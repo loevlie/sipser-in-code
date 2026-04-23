@@ -1,0 +1,72 @@
+// Zed tasks for sipser-in-code.
+// Run with: `task: spawn` (default cmd-shift-t) and pick a label.
+[
+  {
+    "label": "pytest: current file",
+    "command": "pytest",
+    "args": ["-v", "$ZED_FILE"],
+    "cwd": "$ZED_DIRNAME",
+    "tags": ["python-test"],
+    "use_new_terminal": false,
+    "allow_concurrent_runs": false,
+    "reveal": "always"
+  },
+  {
+    "label": "pytest: function under cursor",
+    "command": "pytest",
+    "args": ["-v", "$ZED_FILE::$ZED_SYMBOL"],
+    "cwd": "$ZED_DIRNAME",
+    "tags": ["python-pytest-method"]
+  },
+  {
+    "label": "pytest: failing only",
+    "command": "pytest",
+    "args": ["--lf", "-vv"],
+    "cwd": "$ZED_DIRNAME",
+    "allow_concurrent_runs": false
+  },
+  {
+    "label": "pytest: project suite",
+    "command": "pytest",
+    "args": ["-v"],
+    "cwd": "$ZED_WORKTREE_ROOT/${ZED_RELATIVE_FILE%%/*}"
+  },
+  {
+    "label": "ruff: format repo",
+    "command": "ruff",
+    "args": ["format", "."],
+    "cwd": "$ZED_WORKTREE_ROOT"
+  },
+  {
+    "label": "ruff: check --fix",
+    "command": "ruff",
+    "args": ["check", "--fix", "."],
+    "cwd": "$ZED_WORKTREE_ROOT"
+  },
+  {
+    "label": "cargo: run brainfuck (release)",
+    "command": "cargo",
+    "args": ["run", "--release", "--", "examples/hello.bf"],
+    "cwd": "$ZED_WORKTREE_ROOT/08_brainfuck_rs"
+  },
+  {
+    "label": "cargo: test brainfuck",
+    "command": "cargo",
+    "args": ["test"],
+    "cwd": "$ZED_WORKTREE_ROOT/08_brainfuck_rs",
+    "tags": ["rust-test"],
+    "reveal": "always"
+  },
+  {
+    "label": "cargo: clippy brainfuck",
+    "command": "cargo",
+    "args": ["clippy", "--all-targets", "--", "-D", "warnings"],
+    "cwd": "$ZED_WORKTREE_ROOT/08_brainfuck_rs"
+  },
+  {
+    "label": "regex: run pathological benchmark",
+    "command": "python",
+    "args": ["benchmark.py"],
+    "cwd": "$ZED_WORKTREE_ROOT/03_regex_engine"
+  }
+]

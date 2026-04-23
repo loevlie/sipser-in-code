@@ -1,0 +1,56 @@
+// Zed debugger configurations for sipser-in-code.
+// Open with: `debugger: start` (F4) and pick a label.
+[
+  {
+    "label": "Python: debug current file",
+    "adapter": "Debugpy",
+    "request": "launch",
+    "program": "$ZED_FILE",
+    "cwd": "$ZED_WORKTREE_ROOT",
+    "console": "integratedTerminal",
+    "justMyCode": false
+  },
+  {
+    "label": "Python: pytest (current file)",
+    "adapter": "Debugpy",
+    "request": "launch",
+    "module": "pytest",
+    "args": ["$ZED_FILE", "-v", "-s"],
+    "cwd": "$ZED_WORKTREE_ROOT",
+    "console": "integratedTerminal",
+    "justMyCode": false
+  },
+  {
+    "label": "Python: pytest (failed only, stop on first)",
+    "adapter": "Debugpy",
+    "request": "launch",
+    "module": "pytest",
+    "args": ["--lf", "-x", "-vv"],
+    "cwd": "$ZED_WORKTREE_ROOT",
+    "console": "integratedTerminal",
+    "justMyCode": false
+  },
+  {
+    "label": "Rust: debug brainfuck binary",
+    "adapter": "CodeLLDB",
+    "request": "launch",
+    "build": {
+      "command": "cargo",
+      "args": ["build", "--manifest-path", "08_brainfuck_rs/Cargo.toml"]
+    },
+    "args": ["08_brainfuck_rs/examples/hello.bf"],
+    "sourceLanguages": ["rust"],
+    "cwd": "$ZED_WORKTREE_ROOT/08_brainfuck_rs"
+  },
+  {
+    "label": "Rust: debug cargo tests (brainfuck)",
+    "adapter": "CodeLLDB",
+    "request": "launch",
+    "build": {
+      "command": "cargo",
+      "args": ["test", "--no-run", "--manifest-path", "08_brainfuck_rs/Cargo.toml"]
+    },
+    "sourceLanguages": ["rust"],
+    "cwd": "$ZED_WORKTREE_ROOT/08_brainfuck_rs"
+  }
+]
