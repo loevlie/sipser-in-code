@@ -1,0 +1,7 @@
+let n = 6;
+let acc = 1;
+while n > 0 {
+  let acc = acc * n;
+  let n = n - 1;
+}
+print acc;

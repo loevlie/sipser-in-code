@@ -1,0 +1,12 @@
+{
+  "type": "DFA",
+  "description": "Binary strings with an even number of 1s.",
+  "states": ["even", "odd"],
+  "alphabet": ["0", "1"],
+  "transitions": {
+    "even": {"0": "even", "1": "odd"},
+    "odd": {"0": "odd", "1": "even"}
+  },
+  "start": "even",
+  "accept": ["even"]
+}

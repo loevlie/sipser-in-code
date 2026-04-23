@@ -1,0 +1,11 @@
+{
+  "_comment": "CNF grammar for even-length palindromes over {a,b}. S -> AA' | BB' | AA | BB. Here 'double letter' productions directly cover length-2 cases; for longer strings the recursive wrapping A S A / B S B is expressed via helper nonterminals TA, TB.",
+  "start": "S",
+  "rules": {
+    "S":  [["A", "TA"], ["B", "TB"], ["A", "A"], ["B", "B"]],
+    "TA": [["S", "A"]],
+    "TB": [["S", "B"]],
+    "A":  [["a"]],
+    "B":  [["b"]]
+  }
+}
